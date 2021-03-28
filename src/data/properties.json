@@ -1,0 +1,23 @@
+[
+  {
+    "Location":"Kota Jakarta Timur",
+    "Price":5000000,
+    "Beds":3,
+    "Baths":2,
+    "sqft":2916
+  },
+  {
+    "Location":"Kebon Jeruk",
+    "Price":1500000,
+    "Beds":2,
+    "Baths":2,
+    "sqft":985
+  },
+  {
+    "Location":"Gambir",
+    "Price":13700000,
+    "Beds":5,
+    "Baths":4,
+    "sqft":3007
+  }
+]
