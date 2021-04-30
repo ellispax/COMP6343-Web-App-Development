@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from .serializer import RealtorSerializer
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView,RetrieveAPIView
 
 # @api_view(['GET','POST'])
 # def Realtor_view(request):
@@ -41,8 +41,29 @@ def Realtor_detail(request,pk):
 class Realtor_view(ListAPIView):
     queryset=Realtor.objects.all()
     serializer_class = RealtorSerializer
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
     def post(self, request, *args, **kwargs):
-        file = request.data['file']
-        image = Realtor.objects.create(image=file)
-        import json
-        return HttpResponse(json.dumps({'message': "Uploaded"}), status=200)
+        return self.create(request, *args, **kwargs)
+
+    # def post(self, request, *args, **kwargs):
+    #     file = request.data['file']
+    #     image = Realtor.objects.create(image=file)
+    #     import json
+    #     return HttpResponse(json.dumps({'message': "Uploaded"}), status=200)
+
+class Realtor_detail(RetrieveAPIView):
+    queryset = Realtor.objects.all()
+    serializer_class = RealtorSerializer
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
+
+    def put(self, request, id):
+        listing=self.get_object(id)
+        serializer=RealtorSerializer(listing,data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+

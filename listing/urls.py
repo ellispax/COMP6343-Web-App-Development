@@ -8,7 +8,7 @@ from django.conf import settings
 # routers.register('listings/',Listing_view)
 
 urlpatterns = [
-    path('listings/<int:id>/',Listing_detail_1.as_view()),
+    path('listings/<int:pk>/',Listing_detail.as_view()),
     # path('listings/<int:pk>/',Listing_detail_1.as_view()),
     # path('listings/',Listing_view),
     path('listings/',Listing_view.as_view()),
