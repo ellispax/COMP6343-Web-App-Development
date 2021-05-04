@@ -78,6 +78,8 @@ TEMPLATES = [
     },
 ]
 
+ALLOWED_HOSTS=['https://deploy-weather-application.herokuapp.com%27/']
+
 WSGI_APPLICATION = 'api.wsgi.application'
 
 
