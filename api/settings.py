@@ -78,7 +78,6 @@ TEMPLATES = [
     },
 ]
 
-ALLOWED_HOSTS=['https://deploy-weather-application.herokuapp.com%27/']
 
 WSGI_APPLICATION = 'api.wsgi.application'
 
@@ -143,4 +142,6 @@ STATICFILES_DIRS = (
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'
 
-django_heroku.settings(locals())
+
+# to overwrite the default django user table
+# AUTH_USER_MODEL='users.User'
