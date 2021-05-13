@@ -1,24 +1,33 @@
 <div class="card">
 
   <div class="card-img-wrapper">
-    <img class="card-img-top" src="assets/images/house1.jpg">
-    <!-- <ul class= "list-inline text-center member-icons">
-      <li class= "list-inline-item">
-        <button class="btn btn-primary">View Details</button>
-      </li>
-    </ul> -->
+    <img class="card-img-top" src="assets/images/{{property.Image}}.jpg">
+
   </div>
 
   <div class="card-body p-2">
-    <h1>{{property.Location}}</h1>
-    <h2>{{property.Price}}</h2>
-    <h3>{{property.Beds}}</h3>
-    <h4>{{property.Baths}}</h4>
-    <h5>{{property.sqft}}</h5>
+    <h5 class="property-location"><i class="fas fa-map-marker-alt"></i>{{property.Location}}</h5>
+    <hr size="1" width="15%" color="#A9A9A9">
+    <div class="card-details">
+      <p class="property-price">
+        <span class="currency">IDR </span>
+        <span class="price">{{property.Price}}</span>
+        <span class="time">/ per month</span>
+      </p>
+      <p class="beds-baths-row">
+        <span class="property-beds">Beds: {{property.Beds}}</span>
+        <span class="property-baths">Baths: {{property.Baths}}</span>
+      </p>
+      <p class="sqft-row">
+        <span class="property-sqft">Sqft: {{property.Sqft}}</span>
+      </p>
+    </div>
 
-    <ul class= "list-inline text-center member-icons">
+
+    <ul class= "list-inline text-center member-icons animate">
       <li class= "list-inline-item">
-        <button class="btn btn-primary">View Details</button>
+        <!-- <button class="btn btn-primary" routerLink="/property-detail/{{property.Id}}">View Details</button> -->
+        <button class="btn btn-primary" routerLinkActive="active" routerLink="/property-detail/{{property.Id}}">View Details</button>
       </li>
     </ul>
 

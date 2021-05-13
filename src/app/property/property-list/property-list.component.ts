@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccommodationService } from 'src/app/services/accommodation.service';
+import { IProperty } from '../IProperty.interface';
 
 @Component({
   selector: 'app-property-list',
@@ -8,7 +9,7 @@ import { AccommodationService } from 'src/app/services/accommodation.service';
 })
 export class PropertyListComponent implements OnInit {
 
-  properties: any;
+  properties: Array<IProperty>;
 
   constructor(private accommodationService:AccommodationService) { }
 
@@ -16,12 +17,13 @@ export class PropertyListComponent implements OnInit {
 
     this.accommodationService.getAllProperties().subscribe(
         data=>{
-          this.properties=data;
+          this.properties = data;
           console.log(data);
         }, error => {
+          console.log('httperror:');
           console.log(error);
         }
-    )
+    );
 
 
 
