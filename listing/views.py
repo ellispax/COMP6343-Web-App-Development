@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from rest_framework.generics import ListAPIView,RetrieveAPIView
-
+from rest_framework import generics
 from .models import Listing
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -77,40 +77,40 @@ from rest_framework import viewsets
 
 
 
-class Listing_view(ListAPIView):
-    queryset=Listing.objects.all()
-    serializer_class = ListingSerializer
-
-    # def post(self, request, *args, **kwargs):
-    #     file = request.data['file']
-    #     image = Listing.objects.create(image=file)
-    #     import json
-    #     return HttpResponse(json.dumps({'message': "Uploaded"}), status=200)
-    def get(self, request, *args, **kwargs):
-        return self.list(request, *args, **kwargs)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-
-
-
-
-
-class Listing_detail(RetrieveAPIView):
-    queryset = Listing.objects.all()
-    serializer_class = ListingSerializer
-
-    def delete(self, request, *args, **kwargs):
-        return self.destroy(request, *args, **kwargs)
-
-    def put(self, request, id):
-        listing=self.get_object(id)
-        serializer=ListingSerializer(listing,data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+# class Listing_view(ListAPIView):
+#     queryset=Listing.objects.all()
+#     serializer_class = ListingSerializer
+#
+#     # def post(self, request, *args, **kwargs):
+#     #     file = request.data['file']
+#     #     image = Listing.objects.create(image=file)
+#     #     import json
+#     #     return HttpResponse(json.dumps({'message': "Uploaded"}), status=200)
+#     def get(self, request, *args, **kwargs):
+#         return self.list(request, *args, **kwargs)
+#
+#     def post(self, request, *args, **kwargs):
+#         return self.create(request, *args, **kwargs)
+#
+#
+#
+#
+#
+#
+# class Listing_detail(RetrieveAPIView):
+#     queryset = Listing.objects.all()
+#     serializer_class = ListingSerializer
+#
+#     def delete(self, request, *args, **kwargs):
+#         return self.destroy(request, *args, **kwargs)
+#
+#     def put(self, request, id):
+#         listing=self.get_object(id)
+#         serializer=ListingSerializer(listing,data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data)
+#         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
 
 
@@ -126,6 +126,16 @@ class Listing_detail(RetrieveAPIView):
 #         self.pk = pk
 #         queryset = Listing.objects.get(pk=pk)
 #         serializer_class = ListingSerializer
+
+class Listing_view(generics.ListCreateAPIView):
+    queryset=Listing.objects.all()
+    serializer_class = ListingSerializer
+
+class Listing_detail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Listing
+    serializer_class = ListingSerializer
+
+
 
 
 
