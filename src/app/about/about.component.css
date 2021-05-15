@@ -1,0 +1,11 @@
+.container{
+    display:-ms-inline-grid;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    
+}
+.wrapper{
+    background-image: none ;
+    align-items: center;
+}
