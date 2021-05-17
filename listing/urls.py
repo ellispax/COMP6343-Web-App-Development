@@ -12,6 +12,7 @@ urlpatterns = [
     # path('listings/<int:pk>/',Listing_detail_1.as_view()),
     # path('listings/',Listing_view),
     path('listings/',Listing_view.as_view()),
+    path('listings/search',Listing_search.as_view()),
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

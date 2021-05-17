@@ -8,6 +8,9 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializer import ListingSerializer
 from rest_framework.views import APIView
+# code below import Or condition
+from django.db.models import Q
+import math
 from rest_framework import viewsets
 
 # @api_view(['GET','POST'])
@@ -135,6 +138,50 @@ class Listing_detail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Listing
     serializer_class = ListingSerializer
 
+# class Listing_search(generics.RetrieveAPIView):
+#     queryset = Listing.objects.all()
+#     serializer_class = ListingSerializer
+#     def get(self,request):
+#         s=request.GET.get('s')
+#         listing=Listing.objects.all()
+#
+#         if s:
+#             listing=listing.filter(title__icontains=1)
+#         serializer=ListingSerializer(listing,many=True)
+#         return Response(serializer.data)
+
+class Listing_search(APIView):
+
+    def get(self,request):
+        s=request.GET.get('s')
+        sort=request.GET.get('sort')
+        listing=Listing.objects.all()
+        page=int(request.GET.get('page',1))
+        per_page=4
+
+        listing=Listing.objects.all()
+        # it filters item using title and description. Use the string get from s and match it with the product with title and description
+        # containing s string being given.
+        if s:
+            listing=listing.filter(Q(title__icontains=s)|Q(description__icontains=s))
+
+        if sort=='asc':
+            listing=listing.order_by('price')
+
+        if sort =='desc':
+            listing=listing.order_by('-price')
+
+        total=listing.count()
+        start=(page-1)*per_page
+        end=page*per_page
+
+        serializer=ListingSerializer(listing[start:end],many=True)
+        return Response({
+            'data':serializer.data,
+            'total':total,
+            'page':page,
+            'last_page':math.ceil(total/per_page)
+        })
 
 
 

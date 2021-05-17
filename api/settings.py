@@ -44,9 +44,14 @@ INSTALLED_APPS = [
     'realtor',
     'rest_framework',
     'corsheaders',
+    'user',
 ]
 
 CORS_ORIGIN_ALLOW_ALL=True
+# allow credential so we can consume cookie access
+# if false, our frontend won't be able to get the cookie.
+# if true, frontend can get this cookie after login.
+CORS_ALLOW_CREDENTIALS=True
 
 
 
