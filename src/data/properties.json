@@ -2,6 +2,7 @@
   {
     "Location":"Kota Jakarta Timur",
     "Id":1,
+    "Type": "House",
     "Price":5000000,
     "Beds":3,
     "Baths":2,
@@ -11,6 +12,7 @@
   {
     "Location":"Kebon Jeruk",
     "Id":2,
+    "Type": "Apartment",
     "Price":1500000,
     "Beds":2,
     "Baths":2,
@@ -20,6 +22,7 @@
   {
     "Location":"Gambir",
     "Id":3,
+    "Type":"House",
     "Price":13700000,
     "Beds":5,
     "Baths":4,

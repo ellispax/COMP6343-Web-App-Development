@@ -2,3 +2,52 @@
   add-property works!
   <button (click)="onBack()" class="btn btn primary">Back</button>
 </p>
+
+<div class="card">
+  <div class="card-header">
+    Add New Property
+  </div>
+  <div class="card-body">
+    <form (ngSubmit)='onSubmit(Form)' #Form="ngForm">
+      <div class="form-group col-12">
+        <label for="location">Location</label>
+        <input type="text" class="form-control" #propLocation="ngModel" ngModel name="Location" required maxlength="20">
+        <span *ngIf="!propLocation.valid && propLocation.touched" class="error-message">
+            Please provide location
+        </span>
+      </div>
+
+      <div class="form-group col-12">
+        <label for="type">Type</label>
+        <input type="text" class="form-control" ngModel name="Type" required>
+      </div>
+
+      <div class="form-group col-12">
+        <label for="price">Price</label>
+        <input type="text" class="form-control" ngModel name="Price" required>
+      </div>
+
+      <div class="form-group col-12">
+        <label for="beds">Beds</label>
+        <input type="text" class="form-control" ngModel name="Beds" required>
+
+      </div>
+
+      <div class="form-group col-12">
+        <label for="baths">Baths</label>
+        <input type="text" class="form-control" ngModel name="Baths" required>
+      </div>
+
+      <div class="form-group col-12">
+        <label for="sqft">Sqft</label>
+        <input type="text" class="form-control" ngModel name="Sqft" required>
+      </div>
+
+      <div class="form-group col-12">
+        <button [disabled]="!Form.valid" type="submit" class="btn btn-primary mr-4">Save</button>
+        <button type="reset" class="btn btn-primary">Cancel</button>
+      </div>
+
+    </form>
+  </div>
+</div>
