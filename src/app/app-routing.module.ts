@@ -12,19 +12,24 @@ import { PropertyDetailComponent } from './property/property-detail/property-det
 import { RegisterComponent } from './register/register.component';
 import { AboutComponent  } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { HomeComponent } from './home/home.component';
+import {LandlordComponent } from './profile/landlord/landlord.component';
+import { UserComponent } from './profile/user/user.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  {path: '', component: PropertyListComponent},
+  //{path: '', component: PropertyListComponent},
+  {path: 'home', component: HomeComponent},
   {path: 'listings', component: PropertyListComponent},
   {path: 'add-property', component: AddPropertyComponent},
   {path: 'property-detail/:id', component: PropertyDetailComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'about', component: AboutComponent},
+  {path: 'landlord', component: LandlordComponent},
+  {path: 'user', component: UserComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full'}
-  //{path: '**', component: PropertyListComponent}
-  //{path: 'login', component: LoginComponent},
+  
 ]
 
 @NgModule({

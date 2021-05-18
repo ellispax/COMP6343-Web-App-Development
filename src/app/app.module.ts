@@ -17,6 +17,11 @@ import { authInterceptorProviders } from './_helpers/auth.interceptors';
 import { FootComponent } from './foot/foot.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { HomeComponent } from './home/home.component';
+
+import { UserComponent } from './profile/user/user.component';
+import { LandlordComponent } from './profile/landlord/landlord.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -30,13 +35,18 @@ import { ContactComponent } from './contact/contact.component';
     RegisterComponent,
     FootComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    HomeComponent,
+    
+    UserComponent,
+    LandlordComponent
    ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule
   ],
   providers: [
     authInterceptorProviders,
