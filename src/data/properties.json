@@ -28,5 +28,14 @@
     "Baths":4,
     "Sqft":3007,
     "Image": "house3"
+  },
+  {
+    "Location":"Gambir",
+    "Id":3,
+    "Price":13700000,
+    "Beds":5,
+    "Baths":4,
+    "Sqft":3007,
+    "Image": "house3"
   }
 ]

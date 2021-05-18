@@ -1,0 +1,11 @@
+#profile-img{
+    height: 25%;
+    width: 100%;
+    margin-right: auto;
+    
+
+}
+.container{
+    display: flex;
+    justify-content: center;
+}

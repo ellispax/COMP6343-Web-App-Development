@@ -11,14 +11,19 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { AccommodationService } from './services/accommodation.service';
 import { AddPropertyComponent } from './property/add-property/add-property.component';
 import { PropertyDetailComponent } from './property/property-detail/property-detail.component';
+import { LoginComponent } from './login/login.component';
+import { AppRoutingModule } from './app-routing.module';
+import { RegisterComponent } from './register/register.component';
 
-const appRoutes: Routes = [
-  {path: '', component: PropertyListComponent},
-  {path: 'listings', component: PropertyListComponent},
-  {path: 'add-property', component: AddPropertyComponent},
-  {path: 'property-detail/:id', component: PropertyDetailComponent},
-  {path: '**', component: PropertyListComponent}
-]
+import { authInterceptorProviders } from './_helpers/auth.interceptors';
+import { FootComponent } from './foot/foot.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
+import { HomeComponent } from './home/home.component';
+
+import { UserComponent } from './profile/user/user.component';
+import { LandlordComponent } from './profile/landlord/landlord.component';
+// import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -27,15 +32,27 @@ const appRoutes: Routes = [
     PropertyListComponent,
     NavigationBarComponent,
     AddPropertyComponent,
-    PropertyDetailComponent
+    PropertyDetailComponent,
+    LoginComponent,
+    RegisterComponent,
+    FootComponent,
+    AboutComponent,
+    ContactComponent,
+    HomeComponent,
+
+    UserComponent,
+    LandlordComponent
    ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    // RouterModule.forRoot(appRoutes),
+    AppRoutingModule,
+    RouterModule
   ],
   providers: [
+    authInterceptorProviders,
     AccommodationService
   ],
   bootstrap: [AppComponent]
