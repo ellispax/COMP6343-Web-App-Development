@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+from rest_framework import generics
+from rest_framework import mixins
 from rest_framework.generics import ListAPIView,RetrieveAPIView
 from rest_framework import generics
 from .models import Listing
@@ -7,10 +9,13 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from .serializer import ListingSerializer
+from rest_framework.filters import SearchFilter,OrderingFilter
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.views import APIView
 # code below import Or condition
 from django.db.models import Q
 import math
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
 
 # @api_view(['GET','POST'])
@@ -157,7 +162,7 @@ class Listing_search(APIView):
         sort=request.GET.get('sort')
         listing=Listing.objects.all()
         page=int(request.GET.get('page',1))
-        per_page=4
+        per_page=3
 
         listing=Listing.objects.all()
         # it filters item using title and description. Use the string get from s and match it with the product with title and description
@@ -182,6 +187,17 @@ class Listing_search(APIView):
             'page':page,
             'last_page':math.ceil(total/per_page)
         })
+
+class Listing_searchs(generics.ListAPIView):
+    queryset = Listing.objects.all()
+    serializer_class = ListingSerializer
+    filter_backends = (SearchFilter,OrderingFilter)
+    search_fields=('title','address','city','description','price','realtor__name')
+    pagination_class = PageNumberPagination
+
+
+
+
 
 
 
