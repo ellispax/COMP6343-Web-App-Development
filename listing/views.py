@@ -136,7 +136,7 @@ from rest_framework import viewsets
 #         serializer_class = ListingSerializer
 
 class Listing_view(generics.ListCreateAPIView):
-    queryset=Listing.objects.all()
+    queryset=Listing.objects.order_by('-list_date').filter(is_published=True)
     serializer_class = ListingSerializer
 
 class Listing_detail(generics.RetrieveUpdateDestroyAPIView):
@@ -188,12 +188,17 @@ class Listing_search(APIView):
             'last_page':math.ceil(total/per_page)
         })
 
-class Listing_searchs(generics.ListAPIView):
-    queryset = Listing.objects.all()
+# class Listing_searchs(generics.ListAPIView):
+#     queryset = Listing.objects.all()
+#     serializer_class = ListingSerializer
+#     filter_backends = (SearchFilter,OrderingFilter)
+#     search_fields=('title','address','city','description','price','realtor__name')
+#     pagination_class = PageNumberPagination
+
+class Listing_home(generics.ListCreateAPIView):
+    queryset = Listing.objects.order_by('-list_date').filter(is_published=True)[:3]
     serializer_class = ListingSerializer
-    filter_backends = (SearchFilter,OrderingFilter)
-    search_fields=('title','address','city','description','price','realtor__name')
-    pagination_class = PageNumberPagination
+
 
 
 

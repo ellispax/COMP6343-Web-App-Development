@@ -13,7 +13,8 @@ urlpatterns = [
     # path('listings/',Listing_view),
     path('listings/',Listing_view.as_view()),
     path('listings/search',Listing_search.as_view()),
-    path('listings/searchs',Listing_searchs.as_view()),
+    # path('listings/searchs',Listing_searchs.as_view()),
+    path('listings/home',Listing_home.as_view())
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
