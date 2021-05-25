@@ -2,6 +2,7 @@
   {
     "Location":"Kota Jakarta Timur",
     "Id":1,
+    "Name": "Farm House",
     "Type": "House",
     "Price":5000000,
     "Beds":3,
@@ -12,6 +13,7 @@
   {
     "Location":"Kebon Jeruk",
     "Id":2,
+    "Name": "Gold Apartment",
     "Type": "Apartment",
     "Price":1500000,
     "Beds":2,
@@ -22,20 +24,13 @@
   {
     "Location":"Gambir",
     "Id":3,
+    "Name": "Modern House",
     "Type":"House",
     "Price":13700000,
     "Beds":5,
     "Baths":4,
     "Sqft":3007,
     "Image": "house3"
-  },
-  {
-    "Location":"Gambir",
-    "Id":3,
-    "Price":13700000,
-    "Beds":5,
-    "Baths":4,
-    "Sqft":3007,
-    "Image": "house3"
   }
+
 ]

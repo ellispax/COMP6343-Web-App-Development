@@ -1,4 +1,6 @@
-export interface IProperty {
+import { IPropertyBase } from './ipropertybase';
+
+export class Property implements IPropertyBase {
   Id: number;
   Name: string;
   Location: string;
@@ -8,4 +10,5 @@ export interface IProperty {
   Beds: number;
   Sqft: number;
   Image: string;
+  Description: string;
 }

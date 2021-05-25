@@ -11,7 +11,13 @@ export class AccommodationService {
 
   constructor(private http:HttpClient) {}
 
-
+  getProperty(id: number){
+    return this.getAllProperties().pipe(
+      map(propertiesArray => {
+        return propertiesArray.find(p => p.Id === id);
+      })
+    );
+  }
 
   getAllProperties(): Observable<IProperty[]> {
       return this.http.get('data/properties.json').pipe(
