@@ -4,4 +4,4 @@ from .models import ContactUs
 class ContactUsSerializer(serializers.ModelSerializer):
     class Meta:
         model=ContactUs
-        fields=['listing','name','email','phone','message']
+        fields=['listing_id','listing','name','email','phone','message','user_id','realtor_email']

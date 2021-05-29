@@ -5,6 +5,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from .serializer import ContactUsSerializer
+from rest_framework.views import APIView
+
 
 @api_view(['GET','POST'])
 def ContactUs_view(request):
@@ -37,4 +39,12 @@ def ContactUs_detail(request,pk):
     elif request.method=="DELETE":
         ContactUs_ind.delete()
         return Response(satus=status.HTTP_204_NO_CONTENT)
+class submit_contact(APIView):
+    def post(self,request):
+        serializer=ContactUsSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+
+
 
