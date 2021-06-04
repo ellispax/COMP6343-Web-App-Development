@@ -8,10 +8,10 @@
           <form
             *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
             <div class="form-group">
-              <label for="username">Username</label>
+              <label for="Username">Email</label>
               <input type="text" class="form-control" name="username" [(ngModel)]="form.username" required #username="ngModel"/>
               <div class="alert alert-danger" role="alert" *ngIf="username.errors && f.submitted">
-                Username is required!
+                Email is required!
               </div>
             </div>
   

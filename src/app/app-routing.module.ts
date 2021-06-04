@@ -16,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 import {LandlordComponent } from './profile/landlord/landlord.component';
 import { UserComponent } from './profile/user/user.component';
 
+
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   //{path: '', component: PropertyListComponent},
