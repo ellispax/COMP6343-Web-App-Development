@@ -8,7 +8,7 @@ import {TokenStorageService } from '../_services/token-storage.service';
 export class NavigationBarComponent implements OnInit {
   private roles: string[] = [];
   isLoggedIn = false;
-  username?: string;
+  email?: string;
 
   constructor(private tokenStorageService: TokenStorageService) { }
 
@@ -18,8 +18,12 @@ export class NavigationBarComponent implements OnInit {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
 
-      this.username = user.username;
+      this.email = user.email;
     }
+  }
+  logout(): void {
+    this.tokenStorageService.signOut();
+    window.location.reload();
   }
 
 }

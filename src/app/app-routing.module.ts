@@ -17,6 +17,7 @@ import {LandlordComponent } from './profile/landlord/landlord.component';
 import { UserComponent } from './profile/user/user.component';
 import { PropertyDetailResolverService } from './property/property-detail/property-detail-resolver.service';
 
+
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   //{path: '', component: PropertyListComponent},
