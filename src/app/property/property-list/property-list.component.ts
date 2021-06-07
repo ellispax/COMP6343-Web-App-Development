@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AccommodationService } from 'src/app/services/accommodation.service';
-import { IProperty } from '../IProperty.interface';
+// import { IProperty } from '../IProperty.interface';
+import {Property} from 'src/app/model/property';
+
 
 @Component({
   selector: 'app-property-list',
@@ -9,7 +11,10 @@ import { IProperty } from '../IProperty.interface';
 })
 export class PropertyListComponent implements OnInit {
 
-  properties: Array<IProperty>;
+  Location = '';
+  Search ='';
+
+  properties: Array<Property>;
 
   constructor(private accommodationService:AccommodationService) { }
 
@@ -27,6 +32,10 @@ export class PropertyListComponent implements OnInit {
 
 
 
+  }
+
+  onClickFilter(){
+    this.Search = this.Location;
   }
 
 

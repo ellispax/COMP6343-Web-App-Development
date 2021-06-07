@@ -7,5 +7,6 @@ export interface IPropertyBase {
   Baths: number;
   Beds: number;
   Sqft: number;
+  Lot: number;
   Image: string;
 }

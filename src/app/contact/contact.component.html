@@ -1,1 +1,47 @@
-<p>contact works!</p>
+
+<form (ngSubmit)="submitForm()" #contactForm="ngForm">
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input
+      [(ngModel)] = "firstName"
+      name="firstName"
+      id="firstName"
+      type="text"
+      class="form-control"
+      placeholder="Enter name"
+      #nameInput="ngModel"
+      required>
+
+    <div class="error-message" *ngIf="nameInput.invalid && nameInput.dirty">
+      Your name is required.
+    </div>
+  </div>
+
+  <!-- email field -->
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input
+      [(ngModel)] = "email"
+      type="email"
+      class="form-control"
+      id="Email"
+      #emailInput= "ngModel"
+      aria-describedby="emailHelp"
+      placeholder="Enter email">
+
+    <div class="error-message" *ngIf="emailInput.invalid && emailInput.dirty">
+      Valid email is required
+    </div>
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+
+
+<!-- message field -->
+  <div class="form-group">
+    <label [(ngModel)] = "message" for="message">Message</label>
+    <textarea id="comment" cols="30" rows="10" class="form-control" placeholder="Enter message"></textarea>
+  </div>
+
+<!-- button -->
+  <button class="btn btn-primary" [disabled]="contactForm.invalid">Submit</button>
+</form>

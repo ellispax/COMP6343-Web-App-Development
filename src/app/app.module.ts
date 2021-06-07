@@ -2,10 +2,14 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import {Routes, RouterModule} from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { FilterPipe } from './Pipes/filter.pipe';
+import { SortPipe } from './Pipes/sort.pipe';
+
 
 
 import { AppComponent } from './app.component';
@@ -27,6 +31,7 @@ import { HomeComponent } from './home/home.component';
 
 import { UserComponent } from './profile/user/user.component';
 import { LandlordComponent } from './profile/landlord/landlord.component';
+import { PropertyDetailResolverService } from './property/property-detail/property-detail-resolver.service';
 // import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -45,7 +50,9 @@ import { LandlordComponent } from './profile/landlord/landlord.component';
     HomeComponent,
 
     UserComponent,
-    LandlordComponent
+    LandlordComponent,
+    FilterPipe,
+    SortPipe
    ],
   imports: [
     BrowserModule,
@@ -56,11 +63,14 @@ import { LandlordComponent } from './profile/landlord/landlord.component';
     RouterModule,
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    NgxGalleryModule
+
   ],
   providers: [
     authInterceptorProviders,
-    AccommodationService
+    AccommodationService,
+    PropertyDetailResolverService
   ],
   bootstrap: [AppComponent]
 })

@@ -3,9 +3,11 @@
   overflow: hidden;
 } */
 
-* {
+/* * {
   font-family: "Roboto";
 }
+
+*.not(i) {font-family: Raleway} */
 
 .card-img-wrapper{
   overflow: hidden;
@@ -46,8 +48,18 @@ hr {
   margin-bottom: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
+
+.property-name {
+  text-align: center;
+}
+
 .property-location{
   text-align: center;
+  color: #0C6170;
+}
+
+.bi{
+  padding-right: 5px;
 }
 
 .property-price {
@@ -63,9 +75,9 @@ hr {
 
 }
 
-.property-baths {
-  float: right;
-  margin-right: 15px;
+.property-baths, .property-lot {
+  /* float: right; */
+  margin-left: 15px;
 }
 
 .property-beds {

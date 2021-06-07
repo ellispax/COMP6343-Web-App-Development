@@ -10,6 +10,10 @@
   text-align: center;
 }
 
+.card img {
+  height: 250px;
+}
+
 .property-price {
   text-align: center;
 }
@@ -35,4 +39,33 @@
 .sqft-row{
   display: block;
   margin-left: 15px;
+}
+
+.overview {
+  padding: 5px 15px;
+}
+
+.overview-heading {
+  color: #0C6170;
+}
+
+.ngx-gallery {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.contactCol{
+  text-align: center;
+}
+
+.card-title{
+  padding-top: 10px;
+}
+
+i {
+  font-family: none;
+}
+
+.landlord-name{
+  color: red;
 }
