@@ -107,15 +107,17 @@ WSGI_APPLICATION = 'api.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'web_app_sec_project',
-        'USER': 'root',
-        'PASSWORD': 'Attack@123',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '/cloudsql/jkrealestate-backend:us-central1:realestate-instances',
+            'USER': 'layacheadeth',
+            'PASSWORD': 'Attack250618',
+            'NAME':'main',
+            # 'HOST': 'localhost',
+            'PORT': '3306',
         }
     }
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
