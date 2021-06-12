@@ -6,6 +6,10 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializer import ContactUsSerializer
 from rest_framework.views import APIView
+from django.core.mail import send_mail
+# from django.conf import settings
+
+from django.conf import settings
 
 
 @api_view(['GET','POST'])
@@ -44,7 +48,37 @@ class submit_contact(APIView):
         serializer=ContactUsSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response(serializer.data)
+        send_mail('Congratulation',
+                "You have inquiry this listing",
+                settings.EMAIL_HOST_USER,
+                  ["layacheadeth@gmail.com"],
+                  fail_silently=False
+                  )
 
+        return Response(serializer.data)
+class submit_contact_detail(APIView):
+    def post(self, request):
+        if request.method=='POST':
+            listing_id=request.POST['listing_id']
+            listing=request.POST['listing']
+            name=request.POST['name']
+            email=request.POST['email']
+            phone=request.POST['phone']
+            message=request.POST['message']
+            user_id=request.POST['user_id']
+            realtor_email=request.POST['realtor_email']
+
+            if request.user.is_authenticated:
+                user_id = request.user.id
+                has_contacted = ContactUs.objects.all().filter(listing_id=listing_id, user_id=user_id)
+                if has_contacted:
+                    print("You have already made an inquiry for this listing")
+                    # messages.error(request, 'You have already made an inquiry for this listing')
+                    # return redirect('/listings/' + listing_id)
+
+
+            contact = ContactUs(listing=listing, listing_id=listing_id, name=name, email=email, phone=phone,
+                              message=message, user_id=user_id)
+            contact.save()
 
 

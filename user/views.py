@@ -8,6 +8,25 @@ from rest_framework.exceptions import AuthenticationFailed
 import datetime
 import jwt
 
+class RegisterView_with_condition(APIView):
+    def post(self,request):
+        username = request.data['username']
+        password = request.data['password']
+        email = request.data['email']
+        first_name=request.data['first_name']
+        last_name = request.data['last_name']
+
+        if User.objects.filter(email=email).exists():
+            print("Email is already taken")
+            print("Account has been created using this email")
+        else:
+            serializer = UserSerializer(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            return Response(serializer.data)
+
+
+
 class RegisterView(APIView):
     def post(self,request):
         serializer=UserSerializer(data=request.data)

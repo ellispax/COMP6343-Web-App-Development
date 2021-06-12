@@ -200,6 +200,53 @@ class Listing_home(generics.ListCreateAPIView):
     serializer_class = ListingSerializer
 
 
+class Listing_search_with_condition(APIView):
+
+    def get(self,request):
+        s=request.GET.get('s')
+        num_room=request.GET.get('num_room')
+        sort=request.GET.get('sort')
+        price=request.GET.get('price')
+        location=request.GET.get('location')
+        sqft=request.GET.get('sqft')
+        listing=Listing.objects.all()
+        page=int(request.GET.get('page',1))
+        per_page=3
+
+        listing=Listing.objects.all()
+        # it filters item using title and description. Use the string get from s and match it with the product with title and description
+        # containing s string being given.
+        if s:
+            listing=listing.filter(Q(title__icontains=s)|Q(description__icontains=s))
+        if num_room:
+            listing = listing.filter(num_room__lte=num_room)
+        if price:
+            listing = listing.filter(price__lte=price)
+        if location:
+            listing = listing.filter(location__iexact=location)
+        if sqft:
+            listing = listing.filter(sqft__lte=sqft)
+
+        if sort=='asc':
+            listing=listing.order_by('price')
+
+        if sort =='desc':
+            listing=listing.order_by('-price')
+
+        total=listing.count()
+        start=(page-1)*per_page
+        end=page*per_page
+
+        serializer=ListingSerializer(listing[start:end],many=True)
+        return Response({
+            'data':serializer.data,
+            'total':total,
+            'page':page,
+            'last_page':math.ceil(total/per_page)
+        })
+
+
+
 
 
 

@@ -30,6 +30,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_HOST_USER='layacheadeth@gmail.com'
+EMAIL_HOST_PASSWORD='Attackonline@1234'
+EMAIL_PORT=587
+EMAIL_USE_TLS=True
+EMAIL_USE_SSL=False
+EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+
 
 # Application definition
 
@@ -108,6 +116,18 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'sql6416315',
+#         'USER': 'sql6416315',
+#         'PASSWORD': '7TRibcp7GR',
+#         'HOST': 'sql6.freemysqlhosting.net',
+#         'PORT': '3306',
+#     }
+# }
+
+
 
 REST_FRAMEWORK = {
     'DEFAULT_PARSER_CLASSES': (
