@@ -26,9 +26,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'wt1m@s!z^(wn-z78yffp5!8^z&2d2n+=qx6z$#r*)!yhp)!2&u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 
 EMAIL_HOST='smtp.gmail.com'
 EMAIL_HOST_USER='layacheadeth@gmail.com'
