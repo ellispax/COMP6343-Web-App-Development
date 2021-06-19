@@ -23,12 +23,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'wt1m@s!z^(wn-z78yffp5!8^z&2d2n+=qx6z$#r*)!yhp)!2&u'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
+
+
 
 EMAIL_HOST='smtp.gmail.com'
 EMAIL_HOST_USER='layacheadeth@gmail.com'
@@ -146,16 +146,7 @@ WSGI_APPLICATION = 'api.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'web_app_sec_project',
-        'USER': 'root',
-        'PASSWORD': 'Attack@123',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
-}
+
 
 
 
