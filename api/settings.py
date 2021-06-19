@@ -106,35 +106,35 @@ WSGI_APPLICATION = 'api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-import pymysql
-pymysql.version_info=(1,4,6,'final',0)
-pymysql.install_as_MySQLdb()
-
-if os.getenv('GAE_APPLICATION', None):
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'HOST': '/cloudsql/realestate-project-316907:us-central1:realestate-instances',
-            'USER': 'deth-lay',
-            'PASSWORD': '290619',
-            'NAME': 'main',
-            # 'HOST': 'localhost',
-            # 'PORT': '3306',
-        }
-    }
-
-
-else:
-    DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'web_app_sec_project',
-        'USER': 'root',
-        'PASSWORD': 'Attack@123',
-        'HOST': 'localhost',
-        'PORT': '3306',
-        }
-        }
+# import pymysql
+# pymysql.version_info=(1,4,6,'final',0)
+# pymysql.install_as_MySQLdb()
+#
+# if os.getenv('GAE_APPLICATION', None):
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.mysql',
+#             'HOST': '/cloudsql/realestate-project-316907:us-central1:realestate-instances',
+#             'USER': 'deth-lay',
+#             'PASSWORD': '290619',
+#             'NAME': 'main',
+#             # 'HOST': 'localhost',
+#             # 'PORT': '3306',
+#         }
+#     }
+#
+#
+# else:
+#     DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'web_app_sec_project',
+#         'USER': 'root',
+#         'PASSWORD': 'Attack@123',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#         }
+#         }
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
@@ -145,6 +145,17 @@ else:
 #         'PORT': '3306',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'web_app_sec_project',
+        'USER': 'root',
+        'PASSWORD': 'Attack@123',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
 
 
 
@@ -278,4 +289,10 @@ SIMPLE_JWT={
 
 # to overwrite the default django user table
 # AUTH_USER_MODEL='users.User'
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
+
