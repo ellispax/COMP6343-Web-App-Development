@@ -26,9 +26,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'wt1m@s!z^(wn-z78yffp5!8^z&2d2n+=qx6z$#r*)!yhp)!2&u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 EMAIL_HOST='smtp.gmail.com'
 EMAIL_HOST_USER='layacheadeth@gmail.com'
@@ -106,7 +106,26 @@ WSGI_APPLICATION = 'api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
+import pymysql
+pymysql.version_info=(1,4,6,'final',0)
+pymysql.install_as_MySQLdb()
+
+if os.getenv('GAE_APPLICATION', None):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '/cloudsql/realestate-project-316907:us-central1:realestate-instances',
+            'USER': 'deth-lay',
+            'PASSWORD': '290619',
+            'NAME': 'main',
+            # 'HOST': 'localhost',
+            # 'PORT': '3306',
+        }
+    }
+
+
+else:
+    DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'web_app_sec_project',
@@ -115,7 +134,7 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '3306',
         }
-    }
+        }
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
