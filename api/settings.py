@@ -26,7 +26,8 @@ SECRET_KEY="p8-z2b&09$#fezd*!$@z9=*p9u0c@w4^c0+pgjh+(l3v19agb&"
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUGS=False
+DEBUGS=False
+ALLOWED_HOST=["143.244.169.52"]
 
 
 
