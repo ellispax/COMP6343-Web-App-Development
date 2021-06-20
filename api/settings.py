@@ -146,6 +146,18 @@ WSGI_APPLICATION = 'api.wsgi.application'
 #     }
 # }
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'main',
+        'USER': 'root',
+        'PASSWORD': 'Attackonline@1234',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
+
+
 
 
 
