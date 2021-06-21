@@ -13,23 +13,22 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 from datetime import timedelta
 from django.conf import settings
-
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SECRET_KEY="p8-z2b&09$#fezd*!$@z9=*p9u0c@w4^c0+pgjh+(l3v19agb&"
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-
+SECRET_KEY = 'wt1m@s!z^(wn-z78yffp5!8^z&2d2n+=qx6z$#r*)!yhp)!2&u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG=False
-ALLOWED_HOSTS=["143.244.169.52"]
+DEBUG = True
 
-
+ALLOWED_HOSTS = []
 
 EMAIL_HOST='smtp.gmail.com'
 EMAIL_HOST_USER='layacheadeth@gmail.com'
@@ -107,35 +106,17 @@ WSGI_APPLICATION = 'api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# import pymysql
-# pymysql.version_info=(1,4,6,'final',0)
-# pymysql.install_as_MySQLdb()
-#
-# if os.getenv('GAE_APPLICATION', None):
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.mysql',
-#             'HOST': '/cloudsql/realestate-project-316907:us-central1:realestate-instances',
-#             'USER': 'deth-lay',
-#             'PASSWORD': '290619',
-#             'NAME': 'main',
-#             # 'HOST': 'localhost',
-#             # 'PORT': '3306',
-#         }
-#     }
-#
-#
-# else:
-#     DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'web_app_sec_project',
-#         'USER': 'root',
-#         'PASSWORD': 'Attack@123',
-#         'HOST': 'localhost',
-#         'PORT': '3306',
-#         }
-#         }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'web_app_sec_project',
+        'USER': 'root',
+        'PASSWORD': 'Attack@123',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
@@ -146,20 +127,6 @@ WSGI_APPLICATION = 'api.wsgi.application'
 #         'PORT': '3306',
 #     }
 # }
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'main',
-        'USER': 'root',
-        'PASSWORD': 'Attackonline@1234',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
-}
-
-
-
 
 
 
@@ -174,11 +141,11 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
-    # 'DEFAULT_AUTHENTICATION_CLASSES': (
-    #     'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-    #     'rest_framework.authentication.SessionAuthentication',
-    #     'rest_framework.authentication.BasicAuthentication',
-    # ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
     'DEFAULT_PAGINATION_CLASS':'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE':2,
 
@@ -228,14 +195,16 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+
+
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'
 
-# REST_FRAMEWORK={
-#     'DEFAULT_AUTHENTICATION_CLASSES':(
-#         'rest_framework_simplejwt.authentication.JWTAuthentication',
-# )
-# }
+REST_FRAMEWORK={
+    'DEFAULT_AUTHENTICATION_CLASSES':(
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+)
+}
 
 # REST_FRAMEWORK = {
 #     'DEFAULT_PERMISSION_CLASSES': (
@@ -262,41 +231,35 @@ MEDIA_URL='/media/'
 # }
 
 
-# SIMPLE_JWT={
-#     'ACCESS_TOKEN_LIFETIME':timedelta(minutes=5),
-#     'REFRESH_TOKEN_LIFETIME':timedelta(days=1),
-#     # 'ROTATE_REFRESH_TOKENS':False,
-#     # 'BLACKLIST_AFTER_ROTATION':True,
-#     # 'UPDATE_LAST_LOGIN':False,
-#     #
-#     # 'ALGORITHM':'HS256',
-#     # 'SIGNING_KEY':settings.SECRET_KEY,
-#     # 'VERIFYING_KEY':None,
-#     # 'AUDIENCE':None,
-#     # 'ISSUER':None,
-#
-#     'AUTH_HEADER_TYPES':('Bearer',),
-#     # 'AUTH_HEADER_NAME':'HTTP_AUTHORIZATION',
-#     # 'USER_ID_FIELD':'id',
-#     # 'USER_ID_CLAIM':'user_id',
-#     #
-#     # 'AUTH_TOKEN_CLASSES':('rest_framework_simplejwt.tokens.AccessToken'),
-#     # 'TOKEN_TYPE_CLAIM':'token_type',
-#     #
-#     # 'JIT_CLAIM':'jti',
-#     #
-#     # 'SLIDING_TOKEN_REFRESH_EXP_CLAIM':'refresh_exp',
-#     # 'SLIDING_TOKEN_LIFETIME':timedelta(minutes=5),
-#     # 'SLIDING_TOKEN_REFRESH_LIFETIME':timedelta(days=1),
-#
-# }
+SIMPLE_JWT={
+    'ACCESS_TOKEN_LIFETIME':timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME':timedelta(days=1),
+    # 'ROTATE_REFRESH_TOKENS':False,
+    # 'BLACKLIST_AFTER_ROTATION':True,
+    # 'UPDATE_LAST_LOGIN':False,
+    #
+    # 'ALGORITHM':'HS256',
+    # 'SIGNING_KEY':settings.SECRET_KEY,
+    # 'VERIFYING_KEY':None,
+    # 'AUDIENCE':None,
+    # 'ISSUER':None,
+
+    'AUTH_HEADER_TYPES':('Bearer',),
+    # 'AUTH_HEADER_NAME':'HTTP_AUTHORIZATION',
+    # 'USER_ID_FIELD':'id',
+    # 'USER_ID_CLAIM':'user_id',
+    #
+    # 'AUTH_TOKEN_CLASSES':('rest_framework_simplejwt.tokens.AccessToken'),
+    # 'TOKEN_TYPE_CLAIM':'token_type',
+    #
+    # 'JIT_CLAIM':'jti',
+    #
+    # 'SLIDING_TOKEN_REFRESH_EXP_CLAIM':'refresh_exp',
+    # 'SLIDING_TOKEN_LIFETIME':timedelta(minutes=5),
+    # 'SLIDING_TOKEN_REFRESH_LIFETIME':timedelta(days=1),
+
+}
 
 # to overwrite the default django user table
 # AUTH_USER_MODEL='users.User'
-# django_heroku.settings(locals())
-try:
-    from .local_settings import *
-except ImportError:
-    pass
-
-
+django_heroku.settings(locals())
