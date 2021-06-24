@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-md navbar-dark mb-4" style="background-color: #0C6170">
+  <div class="container-fluid">
+    
+      <a routerLink="/" class="navbar-brand">JK Real estate</a>
+      <!-- <div style="float:right;margin-left:40px">
+      <a routerLink="/about_us" class="navbar-brand">About_us</a>
+      <a routerLink="/search" class="navbar-brand">Featured_listing</a>
+      </div> -->
+    
+    <ul class="navbar-nav mr-auto " routerLinkActive="active">
+      <li class="nav-item">
+        <a routerLink="/" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item">
+        <a  class="nav-link" routerLink="/about_us">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/search">Featured_listing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/contact_us">Contact_us</a>
+      </li>
+      
+    </ul>
+
+
+    <div>
+      <ul class="navbar-nav me-auto mb-2 mb-md-0" *ngIf="!authenticated">
+        <li class="nav-item">
+          <a routerLink="/login" class="nav-link">Login</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/register" class="nav-link">Register</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav me-auto mb-2 mb-md-0" *ngIf="authenticated">
+        <li class="nav-item">
+          <a routerLink="/login" class="nav-link" (click)="logout()">Logout</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/user-profile" class="nav-link" >Your Profile</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+

@@ -1,0 +1,92 @@
+<!-- <form [formGroup]="form" (submit)="submit()">
+  <h1 class="h3 mb-3 fw-normal">Please register</h1>
+
+  <input formControlName="username" class="form-control" placeholder="UserName" required>
+
+  <input formControlName="password" type="password" class="form-control" placeholder="Password" required>
+
+  <input formControlName="email" type="email" class="form-control" placeholder="Email" required>
+
+  <input formControlName="first_name" class="form-control" placeholder="firstname" required>
+
+  <input formControlName="last_name" class="form-control" placeholder="lastname" required>
+
+
+  <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+</form> -->
+
+<div class="container">
+    <div class = "col-md-4">
+        <div class="card card-container">
+            <img id ="profile-img" src ="https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/user.png" style="height:350px;"/>
+            
+            <form [formGroup]="form" (submit)="submit()">
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" name="username" formControlName="username"  
+                    />
+                    <small class="text-danger" *ngIf="form.get('username').invalid && form.get('username').touched">UserName is required</small>
+                    
+                    <!-- <div class="invalid-feedback" *ngIf="form.get('username').invalid && form.get('username').touched">
+                        <div *ngIf="form.get('username').errors.required" >UserName is required</div>
+                    </div> -->
+                </div>
+
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input formControlName="password" type="password" class="form-control"       
+                  />
+                  <small class="text-danger" *ngIf="form.get('password').invalid && form.get('password').touched" >password is required (6+ characters)</small>
+                  
+                  <!-- <div *ngIf="form.get('password').touched && form.get('password').invalid"  class="invalid-feedback">
+                    <div *ngIf="form.get('password').errors.required" >password is required</div>
+                    <div *ngIf="form.get('password').errors.minlength" >password must be at least 6 characters</div>
+                </div> -->
+              </div>
+
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input formControlName="email" type="email" class="form-control"          
+                    />
+                    <small class="text-danger" *ngIf="form.get('email').invalid && form.get('email').touched" >Email is required (must be in email format)</small>
+                    <!-- <div *ngIf="form.get('email').touched && form.get('email').invalid"  class="invalid-feedback">
+                        <div *ngIf="form.get('email').errors.required " >Email is required</div>
+                        <div *ngIf="form.get('email').errors.email " >Email must be a valid email address</div>
+                    </div> -->
+                </div>
+
+                <div class="form-group">
+                  <label for="first_name">First_name</label>
+                  <input formControlName="first_name" class="form-control"              
+                  />
+                  <small class="text-danger" *ngIf="form.get('first_name').invalid && form.get('first_name').touched" >First_name is required</small>
+                  
+                  <!-- <div class="invalid-feedback" *ngIf="form.get('first_name').invalid && form.get('first_name').touched">
+                    <div *ngIf="form.get('first_name').errors.required" >First_name is required</div>
+                </div> -->
+              </div>
+
+              <div class="form-group">
+                <label for="last_name">last_name</label>
+                <input formControlName="last_name" class="form-control"   
+                />
+                <small class="text-danger" *ngIf="form.get('last_name').invalid && form.get('last_name').touched" >Last_name is required</small>
+                <!-- <div class="invalid-feedback" *ngIf="form.get('last_name').invalid && form.get('last_name').touched" >
+                    <div *ngIf="form.get('last_name').errors.required" >Last_name is required</div>
+                </div> -->
+            </div>
+
+                
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" [disabled]="form.invalid" >Sign Up</button>
+                    <!-- <button class="btn btn-primary btn-block"  >Sign Up</button> -->
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+

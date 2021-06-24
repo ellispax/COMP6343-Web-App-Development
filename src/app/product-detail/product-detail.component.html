@@ -1,0 +1,275 @@
+<div class="row shadow">
+
+  <div class="col-sm-16 p-0" style="display: flex;">
+
+    <div class="card">
+      <div class="card-img-wrapper">
+        <img src="{{listing_detail.photo_main}}" class="card-img-top">
+      </div>
+      <div class="card-body">
+        <h1 class="card-title">{{listing_detail.title}}</h1>
+        <p class="property-price">
+          <span class="currency">IDR </span>
+          <span class="price">{{listing_detail.price}}</span>
+          <span class="time">/ per month</span>
+        </p>
+        <p class="beds-baths-row">
+          <span class="property-beds">Beds:{{listing_detail.bedrooms}} </span>
+          <span class="property-baths">Baths:{{listing_detail.bathrooms}} </span>
+        </p>
+        <p class="sqft-row">
+          <span class="property-sqft">Sqft: {{listing_detail.sqft}} </span>
+        </p>
+        <p class="sqft-row">
+          <span class="property-sqft">listing_id: {{listing_detail.id}} </span>
+        </p>
+        <p class="sqft-row">
+          <span class="property-sqft">realtor_email: {{realtor_detail.email}} </span>
+        </p>
+      </div>
+      <div class="card-footer">
+
+      </div>
+    </div>
+   
+
+<div class="col-sm-8 p-0">
+    <div class="tab-panel p-3">
+      <div>
+
+       <tabset class="member-tabset">
+          <tab heading="Overview">
+
+            <h4 class="overview-heading overview">Overview</h4>
+
+          <div class="row overview">
+
+            <div class="col-sm-6">
+              <div class="heading">
+                <strong>Property Location:</strong>
+                <p>{{listing_detail.address}}</p>
+              </div>
+
+              <div class="heading">
+                <strong>Property Type:</strong>
+                <!-- <p>{{property.Type}}</p> -->
+              </div>
+
+              <div class="heading">
+                <strong>Property Style:</strong>
+                <!-- <p>{{property.Style}}</p> -->
+              </div>
+
+              <div class="heading">
+                <strong>Year Built:</strong>
+                <!-- <p>{{property.YearBuilt}}</p> -->
+              </div>
+
+            </div>
+
+
+            <div class="col-sm-6">
+              <div class="heading">
+                <strong>Number of Bedrooms:</strong>
+                <p>{{listing_detail.bedrooms}}</p>
+              </div>
+
+              <div class="heading">
+                <strong>Number of Bathrooms:</strong>
+                <p>{{listing_detail.bathrooms}}</p>
+              </div>
+
+              <div class="heading">
+                <strong>Lot:</strong>
+                <!-- <p>{{property.Lot}}</p> -->
+              </div>
+
+              <div class="heading">
+                <strong>Sqft:</strong>
+                <p>{{listing_detail.sqft}}</p>
+              </div>
+
+            </div>
+
+            <div class="col-sm-12">
+              <div class="heading">
+                  <strong>About Property</strong>
+                  <p>{{listing_detail.description}}</p>
+              </div>
+          </div>
+
+
+
+
+          </div>
+
+          </tab>
+
+
+          <tab heading="Contact">
+
+          <div class="row contact">
+
+          <div class="col-sm-3 contactCol">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFCcgu2d_Qjxd7F_Q56AjNR69iu1jPszQ1NQ&usqp=CAU" class="card-img-top">
+                <h6 class="card-title">Property Landlord</h6>
+                <!-- <h6 class="text-secondary landlord-name">{{property.Landlord}}</h6> -->
+                <h6 class="text-secondary landlord-name"></h6>
+                <!-- <span class="landlord-contact"><i class="bi bi-telephone-fill"></i> {{property.LandlordContact}}</span> -->
+                <span class="landlord-contact"><i class="bi bi-telephone-fill"></i> </span>
+  
+              </div>
+
+              <div class="col-sm-9">
+  <form [formGroup]="form" (submit)="submit()" >
+    <label for="fname">listing</label>
+    <input formControlName="listing" type="text" id="fname" name="listing" placeholder="" >
+
+    <label for="fname">listing_id</label>
+    <input formControlName="listing_id" type="text" id="fname" name="listing_id" placeholder="" >
+
+
+    <label for="lname">Name</label>
+    <input formControlName="name" type="text" id="lname" name="name" placeholder="">
+    <small class="text-danger" *ngIf="form.get('name').invalid && form.get('name').touched">Name is required</small>
+
+    <label for="country">Email</label>
+    <input formControlName="email" type="text" id="lname" name="email" placeholder="">
+    <small class="text-danger" *ngIf="form.get('email').invalid && form.get('email').touched">Email is required</small>
+
+    <label for="lname">Phone</label>
+    <input formControlName="phone" type="text" id="lname" name="phone" placeholder="">
+    <small class="text-danger" *ngIf="form.get('phone').invalid && form.get('phone').touched">Phone is required</small>
+
+    <label for="subject">Message</label>
+    <textarea id="subject" formControlName="message" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+    <small class="text-danger" *ngIf="form.get('message').invalid && form.get('message').touched">Message is required</small>
+
+
+    
+    <label for="country">user_id</label>
+    <input formControlName="user_id" type="text" id="lname" name="user_id" placeholder="">
+
+    <label for="country">realtor_email</label>
+    <input formControlName="realtor_email" type="text" id="lname" name="realtor_email" placeholder="">
+    <small class="text-danger" *ngIf="form.get('realtor_email').invalid && form.get('realtor_email').touched">Realtor_email is required</small>
+    
+    
+
+    
+    <input type="submit" value="Submit" [disabled]="form.invalid">
+  </form>
+</div>
+</div>
+          </tab>
+       </tabset>
+
+ <!-- <div class="container" *ngIf="!authenticated">
+  <form action="/action_page.php">
+    <label for="fname">listing_id</label>
+    <input type="text" id="fname" name="listing_id" placeholder="" >
+
+    <label for="fname">listing</label>
+    <input type="text" id="fname" name="listing" placeholder="" >
+
+    <label for="lname">Name</label>
+    <input type="text" id="lname" name="name" placeholder="">
+
+    <label for="country">Email</label>
+    <input type="text" id="lname" name="email" placeholder="">
+
+    <label for="country">user_id</label>
+    <input type="text" id="lname" name="user_id" placeholder="">
+    
+
+    <label for="subject">Message</label>
+    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+    <input type="submit" value="Submit">
+  </form>
+</div>  -->
+
+
+      </div>
+    </div>
+  
+      
+  
+      
+
+</div>
+  </div>
+</div>
+
+<style>
+  body {
+    background: #ccc;
+    font-family: 'Roboto', sans-serif;
+}
+.mytabs {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 25px;
+}
+.mytabs input[type="radio"] {
+    display: none;
+}
+.mytabs label {
+    padding: 25px;
+    background: #e2e2e2;
+    font-weight: bold;
+}
+
+.mytabs .tab {
+    width: 100%;
+    padding: 20px;
+    background: #fff;
+    order: 1;
+    display: none;
+}
+.mytabs .tab h2 {
+    font-size: 3em;
+}
+
+.mytabs input[type='radio']:checked + label + .tab {
+    display: block;
+}
+
+.mytabs input[type="radio"]:checked + label {
+    background: #fff;
+
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+

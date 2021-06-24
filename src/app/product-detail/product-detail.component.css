@@ -1,0 +1,70 @@
+.card {
+    min-height: 600px;
+    display: flex;
+  }
+  
+  * {
+    font-family: "Roboto";
+  }
+  
+  .card-title{
+    text-align: center;
+  }
+  
+  .property-price {
+    text-align: center;
+  }
+  
+  .price {
+    font-weight: bold;
+  }
+  
+  .time {
+    color: #888782;
+  
+  }
+  
+  .property-baths {
+    float: right;
+    margin-right: 15px;
+  }
+  
+  .property-beds {
+    margin-left: 15px;
+  }
+  
+  .sqft-row{
+    display: block;
+    margin-left: 15px;
+  }
+
+  .mytabs{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 600px;
+    margin: 50px auto;
+    padding:25px;
+  }
+
+  .mytabs input[type="radio"]{
+    display: none;
+  }
+  
+  .mytabs label{
+    padding: 25px;
+    background: #e2e2e2;
+    font-weight: bold;
+    
+  }
+
+  .mytabs .tab{
+    width:100%;
+    padding:20px;
+    background:#fff;
+    order: 1;
+
+  }
+
+  .card-footer{
+    float:right;
+  }

@@ -1,0 +1,94 @@
+/* .propertyimg{
+
+  overflow: hidden;
+} */
+
+/* * {
+  font-family: "Roboto";
+}
+
+*.not(i) {font-family: Raleway} */
+
+.card-img-wrapper{
+  overflow: hidden;
+  /* position: relative; */
+}
+
+/* .card {
+  position: relative;
+} */
+
+.card:hover img{
+  transform:scale(1.2,1.2);
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+  height: 200px;
+  width: 350px;
+}
+
+.card img{
+  transform:scale(1,1);
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+  height: 200px;
+  width: 350px;
+}
+
+.member-icons{
+/* position: absolute;
+bottom: 0;
+left: 0;
+right: 0; */
+margin-right: auto;
+margin-left: auto
+
+}
+
+hr {
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.property-name {
+  text-align: center;
+}
+
+.property-location{
+  text-align: center;
+  color: #0C6170;
+}
+
+.bi{
+  padding-right: 5px;
+}
+
+.property-price {
+  text-align: center;
+}
+
+.price {
+  font-weight: bold;
+}
+
+.time {
+  color: #888782;
+
+}
+
+.property-baths, .property-lot {
+  /* float: right; */
+  margin-left: 15px;
+}
+
+.property-beds {
+  margin-left: 15px;
+}
+
+.sqft-row{
+  display: block;
+  margin-left: 15px;
+}
+
+.btn-primary {
+  display:block;
+}
